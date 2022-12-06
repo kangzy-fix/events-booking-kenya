@@ -7,23 +7,27 @@ import Home from "./Home";
 import Header from "./Header";
 
 
-function App (){
-  const [ user, setUser] = useState(null);
+// function preventdefault(e) {
+//   e.preventDefault();
+// }
 
-  useEffect( () => {
-    //auto log in
+function App() {
+  const [user, setUser] = useState(null);
+
+
+  useEffect(() => {
+    // auto-login
     fetch("/users").then((r) => {
-      if (r.ok){
+      if (r.ok) {
         r.json().then((user) => setUser(user));
       }
     });
   },[]);
 
-    return (
-      <>
-        <div className="banner_title">
-          <Header/>
-        </div>
+  return (
+    <>
+
+        <div className="banner_title"><Header/></div>
         <div class="banner">
           <div class="mini">
             <NavBar user={user} setUser={setUser} />
@@ -43,7 +47,7 @@ function App (){
           </Routes>
         )}
       </main>
-      </>
-    );
-};
+    </>
+  );
+}
 export default App;

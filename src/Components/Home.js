@@ -1,11 +1,17 @@
+// part-1
+
+
 import { useState, useEffect } from "react";
+//  import { Routes, Route } from "react-router-dom";
+// import Header from "./Header";
 import NewEventForm from "./NewEventForm";
 import EventItem from "./EventItem";
 import ImageSlider from "./ImageSlider";
 
-function Home({ user }){
- //slides
- const slides = [
+
+function Home({ user }) {
+   //slider
+   const slides = [
     { url: "https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?k=20&m=1285301614&s=612x612&w=0&h=WbwgiM4M_JWWC9ew3Mhxq1XPyfZ-Sko_RgKf7toPe7A=", title: "beach" },
     { url: "https://www.strong4life.com/-/media/Strong4Life/Pages/Activity/Articles/6-Fun-and-Easy-Outdoor-Activities-for-Kids/SLP17_MIX_4y_Family_riding_bikes_0444.jpg", title: "boat" },
     { url: "https://www.elitehavens.com/magazine/wp-content/uploads/2016/09/rafting-resize-1.jpg", title: "forest" },
@@ -18,8 +24,13 @@ function Home({ user }){
     margin: "0 auto",
   };
 
+  // part-2
+
   const [events, setEvents] = useState([]);
-  const[isTrue,setIsTrue]=useState(true);
+  const[isTrue,setIsTrue]=useState(true)
+  const[book,setBook]=useState()
+  // const[books,setBooks]=useState()
+
 
   useEffect(() => {
     fetch("/events")
@@ -50,15 +61,19 @@ function Home({ user }){
       events.filter((spice) => spice.id !== deletedSpice.id)
     );
   }
+  // function handleAddTicket(addedTicket){
+  //   setBooks((books)=>[...books, addedTicket])
+  //   console.log(books)
+  // }
 
   function handleClick(){
     setIsTrue(!isTrue)
   }
+  
   if (user) {
-    return <>
-    <h1>Welcome, Grace <element className="live_events">{user.username}</element>!</h1>
+    return <><h1>Welcome, Grace <element className="live_events">{user.username}</element>!</h1>
     <h3>Booked tickets:{book}</h3>
-    {/* body content */}
+    {/* part-3:body content */}
 
     <h1>live: <element className="live_events">{events.length}</element></h1>
       <main>
@@ -79,8 +94,10 @@ function Home({ user }){
           ))}
         </section>
       </main>
+
+
     </>;
-   } else {
+  } else {
     return <div class="body_msg">
       <div className="text-msg">
         <h1>Please Login or Sign Up</h1>
