@@ -56,7 +56,7 @@ function SignUp({ setUser }) {
           autoComplete="current-password"
         />
         {msg?(<div className="error-msg">
-          <h5 className="error-text">* Password should be idenical and username unique!.</h5>
+          <h5 className="error-text">* Password should be identical and username unique!.</h5>
         </div>):(null)}
         <button className="s-btn" type="submit">Sign Up</button>
       </form>
