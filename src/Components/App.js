@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {Route, Routes } from "react-router-dom";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import Header from "./Header";
-
-
-// function preventdefault(e) {
-//   e.preventDefault();
-// }
 
 function App() {
   const [user, setUser] = useState(null);
@@ -43,10 +40,15 @@ function App() {
           <Routes>
             <Route path="/signup" element = { <SignUp setUser={setUser} />} />
             <Route path="/login" element = {<Login  setUser={setUser} />}  />
-            <Route path="/" element = {<Home />} />
+            <Route path="/" element = {<Home user={user}/>} />
           </Routes>
         )}
       </main>
+      
+      <ToastContainer
+      position="top-center"
+      
+      />
     </>
   );
 }

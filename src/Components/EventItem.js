@@ -1,5 +1,7 @@
 import { useState } from "react";
 import StarRating from "./StarRating";
+import {  toast } from 'react-toastify';
+
  
 
     function EventItem({ spice, onUpdateSpice, onDeleteSpice  }) {
@@ -38,11 +40,11 @@ import StarRating from "./StarRating";
               if (r.ok) {
                 onDeleteSpice(spice);
               }
+            })
+            .then(() => {
+              toast.warn("Event Deleted!");
             });
           }
-        
-        
-
     return (
         <div className="spice-item card">
         <img src={image} alt={title} />

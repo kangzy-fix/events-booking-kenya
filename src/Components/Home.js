@@ -10,6 +10,10 @@ import ImageSlider from "./ImageSlider";
 
 
 function Home({ user }) {
+
+
+  
+  
    //slider
    const slides = [
     { url: "https://media.istockphoto.com/photos/young-man-arms-outstretched-by-the-sea-at-sunrise-enjoying-freedom-picture-id1285301614?k=20&m=1285301614&s=612x612&w=0&h=WbwgiM4M_JWWC9ew3Mhxq1XPyfZ-Sko_RgKf7toPe7A=", title: "beach" },
@@ -25,14 +29,17 @@ function Home({ user }) {
   };
 
   // part-2
+  
 
   const [events, setEvents] = useState([]);
   const[isTrue,setIsTrue]=useState(true)
   const[book,setBook]=useState()
-  // const[books,setBooks]=useState()
-
+ const[books,setBooks]=useState()
+   
+ 
 
   useEffect(() => {
+    
     fetch("/events")
       .then((r) => r.json())
       .then(setEvents);
@@ -61,17 +68,17 @@ function Home({ user }) {
       events.filter((spice) => spice.id !== deletedSpice.id)
     );
   }
-  // function handleAddTicket(addedTicket){
-  //   setBooks((books)=>[...books, addedTicket])
-  //   console.log(books)
-  // }
+  function handleAddTicket(addedTicket){
+    setBooks((books)=>[...books, addedTicket])
+    console.log(books)
+  }
 
   function handleClick(){
     setIsTrue(!isTrue)
   }
   
   if (user) {
-    return <><h1>Welcome, Grace <element className="live_events">{user.username}</element>!</h1>
+    return <><h1>Welcome to Event Hub<element className="live_events">{user.username}</element>!</h1>
     <h3>Booked tickets:{book}</h3>
     {/* part-3:body content */}
 
@@ -89,7 +96,7 @@ function Home({ user }) {
               spice={spice}
               onUpdateSpice={handleUpdateSpice}
               onDeleteSpice={handleDeleteSpice}
-              // onAddTicket={handleAddTicket}
+              onAddTicket={handleAddTicket}
             />
           ))}
         </section>

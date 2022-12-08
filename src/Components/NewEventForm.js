@@ -1,4 +1,6 @@
 import { useState } from "react";
+import {  toast } from 'react-toastify';
+
 
 const initialState = {
   title: "",
@@ -33,8 +35,9 @@ function NewSpiceForm({ onAddSpice }) {
       .then((newEvent) => {
         setFormData(initialState);
         onAddSpice(newEvent);
-      });
-  }
+      })
+      toast.success("Event Added!");
+    }
 
   return (
     <div className="card ">
