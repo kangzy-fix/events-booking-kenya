@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {  toast } from 'react-toastify';
 
 function Login({ setUser }){
     const [username, setUsername] = useState("");
@@ -19,7 +20,9 @@ function Login({ setUser }){
           }
           else
           setMsg("Invalid Username or Password");
-          
+
+        }).then(() => {
+          toast.success("Login Successful, navigate to home page!");
         });
       }
       return (

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { redirect } from "react-router-dom";
+import {  toast } from 'react-toastify';
+
 
 function SignUp({ setUser }) {
     const [username, setUsername] = useState("");
@@ -25,7 +28,19 @@ function SignUp({ setUser }) {
         setMsg("*Password should be identical and username unique")
        
   
+      })
+      .then(() => {
+        toast.success("Sign Up Successful!");
+      })
+      .then(() => {
+        if (!setUser) {
+          return redirect("/login");
+        }
+      
       });
+
+
+   
     }
   return (
     <div className="form_container">

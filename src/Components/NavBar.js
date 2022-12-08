@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {  toast } from 'react-toastify';
+
 
 function NavBar({ user, setUser }) {
   function handleLogoutClick() {
@@ -7,7 +9,10 @@ function NavBar({ user, setUser }) {
       if (r.ok) {
         setUser(null);
       }
+    }).then(() => {
+      toast.info("Logout Successful, See you soon!");
     });
+    ;
   }
 
   return (
