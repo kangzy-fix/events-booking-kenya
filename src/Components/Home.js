@@ -12,7 +12,7 @@ import ImageSlider from "./ImageSlider";
 function Home({ user }) {
 
 
-  
+
   
    //slider
    const slides = [
@@ -40,7 +40,7 @@ function Home({ user }) {
 
   useEffect(() => {
     
-    fetch("/events")
+    fetch(`/events/`)
       .then((r) => r.json())
       .then(setEvents);
   }, []);
