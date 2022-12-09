@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/users").then((r) => {
+    fetch("/").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
